@@ -165,6 +165,7 @@ public class caeserCipherEncryptionForm extends javax.swing.JFrame {
 
     private void encryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encryptButtonActionPerformed
         String outputText;
+        char xorKey = 'P';
         //get text from text field
         String inputText = encryptTextField.getText();
         //create empty string
@@ -194,6 +195,7 @@ public class caeserCipherEncryptionForm extends javax.swing.JFrame {
             }
             //turn integer back into a character
             charArray[i] = (char)tempInt;
+            charArray[i] = (char)(charArray[i] ^ xorKey);
         }
         //output encrypted text
         outputText = new String(charArray);
@@ -201,6 +203,7 @@ public class caeserCipherEncryptionForm extends javax.swing.JFrame {
     }//GEN-LAST:event_encryptButtonActionPerformed
 
     private void decryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decryptButtonActionPerformed
+        char xorKey = 'P';
         String outputText;
         //get text from text field
         String inputText = decryptTextField.getText();
@@ -217,6 +220,7 @@ public class caeserCipherEncryptionForm extends javax.swing.JFrame {
         
         //encrypt each character
         for (int i = 0; i < charArray.length; i++){
+            charArray[i] = (char)(charArray[i] ^ xorKey);
             //convert character to an int
             int tempInt = (int)charArray[i];
             //add 6
